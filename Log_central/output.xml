@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.0 (Python 3.9.2 on win32)" generated="20220303 15:54:41.117" rpa="false" schemaversion="2">
+<suite id="s1" name="OFW Login" source="C:\Users\user\Documents\Central\OFW_Login.robot">
+<test id="s1-t1" name="[MPLO001] Login With Wrong Email And Wrong Password">
+<kw name="Default Test Setup" library="OFW_Login_Page" type="SETUP">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{options}</var>
+<arg>headless=${False}</arg>
+<arg>ignore_https_errors=${True}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220303 15:54:41.485" level="INFO">&amp;{options} = { headless=False | ignore_https_errors=True }</msg>
+<status status="PASS" starttime="20220303 15:54:41.478" endtime="20220303 15:54:41.485"/>
+</kw>
+<kw name="Open Browser" library="PuppeteerLibrary">
+<arg>https://www.officemate.co.th/en</arg>
+<arg>options=&amp;{options}</arg>
+<arg>alias=OfficeMateEn_1</arg>
+<doc>Opens a new browser instance to the specific ``url``.</doc>
+<msg timestamp="20220303 15:54:41.485" level="INFO">https://www.officemate.co.th/en</msg>
+<status status="PASS" starttime="20220303 15:54:41.485" endtime="20220303 15:54:53.164"/>
+</kw>
+<kw name="Close the Popup window before login page" library="OFW_Login_Page">
+<doc>ปิดหน้า popup ก่อนที่จะเข้าหน้า login</doc>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${is_login_page_visible}</var>
+<arg>Wait Until Element Is Visible</arg>
+<arg>${MP_btn_Close_Popup_Banner}</arg>
+<arg>100s</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Wait Until Element Is Visible" library="PuppeteerLibrary">
+<arg>${MP_btn_Close_Popup_Banner}</arg>
+<arg>100s</arg>
+<doc>Waits until ``locator`` element is displayed on web page.</doc>
+<kw name="Capture Page Screenshot" library="PuppeteerLibrary">
+<doc>Capture current web page as image png file.</doc>
+<msg timestamp="20220303 15:56:33.456" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="puppeteer-screenshot-5.png"&gt;&lt;img src="puppeteer-screenshot-5.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220303 15:56:33.184" endtime="20220303 15:56:33.457"/>
+</kw>
+<msg timestamp="20220303 15:56:33.458" level="FAIL">TimeoutError: Timeout 100000ms exceeded.
+=========================== logs ===========================
+waiting for selector "//*[@id="wrap-close-button-1454703945249"]" to be visible
+============================================================</msg>
+<status status="FAIL" starttime="20220303 15:54:53.165" endtime="20220303 15:56:33.458"/>
+</kw>
+<msg timestamp="20220303 15:56:33.458" level="INFO">${is_login_page_visible} = False</msg>
+<status status="PASS" starttime="20220303 15:54:53.164" endtime="20220303 15:56:33.458"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>"${is_login_page_visible}"=="True"</arg>
+<arg>Click Element</arg>
+<arg>${MP_btn_Close_Popup_Banner}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220303 15:56:33.459" endtime="20220303 15:56:33.459"/>
+</kw>
+<status status="PASS" starttime="20220303 15:54:53.164" endtime="20220303 15:56:33.459"/>
+</kw>
+<status status="PASS" starttime="20220303 15:54:41.478" endtime="20220303 15:56:33.459"/>
+</kw>
+<kw name="Login With Wrong Email And Wrong Password" library="OFW_Login_Page">
+<arg>vvvv_5429@gmail.com</arg>
+<arg>Ab12345678</arg>
+<doc>Login With Wrong Email And Wrong Password</doc>
+<kw name="Select login button on Headbar" library="OFW_Login_Page">
+<kw name="Wait Until Element Is Visible" library="PuppeteerLibrary">
+<arg>${MP_Login_Btn}</arg>
+<doc>Waits until ``locator`` element is displayed on web page.</doc>
+<status status="PASS" starttime="20220303 15:56:33.460" endtime="20220303 15:56:33.474"/>
+</kw>
+<kw name="Click Element" library="PuppeteerLibrary">
+<arg>${MP_Login_Btn}</arg>
+<doc>Clicks element identified by ``locator``.</doc>
+<msg timestamp="20220303 15:56:33.475" level="INFO">Clicking element 'xpath=//a[.='LOG IN']'.</msg>
+<status status="PASS" starttime="20220303 15:56:33.474" endtime="20220303 15:56:33.699"/>
+</kw>
+<status status="PASS" starttime="20220303 15:56:33.460" endtime="20220303 15:56:33.699"/>
+</kw>
+<kw name="Wait for login box loaded" library="OFW_Login_Page">
+<doc>wait for login box</doc>
+<kw name="Wait Until Element Is Visible" library="PuppeteerLibrary">
+<arg>${MP_LoginBox_lbl_Login}</arg>
+<doc>Waits until ``locator`` element is displayed on web page.</doc>
+<status status="PASS" starttime="20220303 15:56:33.699" endtime="20220303 15:56:33.754"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="PuppeteerLibrary">
+<arg>${MP_LoginBox_lbl_Email}</arg>
+<doc>Waits until ``locator`` element is displayed on web page.</doc>
+<status status="PASS" starttime="20220303 15:56:33.754" endtime="20220303 15:56:33.762"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="PuppeteerLibrary">
+<arg>${MP_LoginBox_txt_Email}</arg>
+<doc>Waits until ``locator`` element is displayed on web page.</doc>
+<status status="PASS" starttime="20220303 15:56:33.762" endtime="20220303 15:56:33.769"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="PuppeteerLibrary">
+<arg>${MP_LoginBox_lbl_Password}</arg>
+<doc>Waits until ``locator`` element is displayed on web page.</doc>
+<status status="PASS" starttime="20220303 15:56:33.769" endtime="20220303 15:56:33.775"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="PuppeteerLibrary">
+<arg>${MP_LoginBox_txt_Password}</arg>
+<doc>Waits until ``locator`` element is displayed on web page.</doc>
+<status status="PASS" starttime="20220303 15:56:33.775" endtime="20220303 15:56:33.781"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="PuppeteerLibrary">
+<arg>${MP_LoginBox_btn_ShowPassword}</arg>
+<doc>Waits until ``locator`` element is displayed on web page.</doc>
+<status status="PASS" starttime="20220303 15:56:33.781" endtime="20220303 15:56:33.788"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="PuppeteerLibrary">
+<arg>${MP_LoginBox_lbl_RememberLogin}</arg>
+<doc>Waits until ``locator`` element is displayed on web page.</doc>
+<status status="PASS" starttime="20220303 15:56:33.788" endtime="20220303 15:56:33.796"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="PuppeteerLibrary">
+<arg>${MP_LoginBox_chk_ShowPassword}</arg>
+<doc>Waits until ``locator`` element is displayed on web page.</doc>
+<status status="PASS" starttime="20220303 15:56:33.796" endtime="20220303 15:56:33.806"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="PuppeteerLibrary">
+<arg>${MP_LoginBox_btn_ForgotPassword}</arg>
+<doc>Waits until ``locator`` element is displayed on web page.</doc>
+<status status="PASS" starttime="20220303 15:56:33.806" endtime="20220303 15:56:33.814"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="PuppeteerLibrary">
+<arg>${MP_LoginBox_btn_SubmitLogin}</arg>
+<doc>Waits until ``locator`` element is displayed on web page.</doc>
+<status status="PASS" starttime="20220303 15:56:33.814" endtime="20220303 15:56:33.821"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="PuppeteerLibrary">
+<arg>${MP_LoginBox_lbl_or}</arg>
+<doc>Waits until ``locator`` element is displayed on web page.</doc>
+<status status="PASS" starttime="20220303 15:56:33.821" endtime="20220303 15:56:33.827"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="PuppeteerLibrary">
+<arg>${MP_LoginBox_btn_FBlogin}</arg>
+<doc>Waits until ``locator`` element is displayed on web page.</doc>
+<status status="PASS" starttime="20220303 15:56:33.828" endtime="20220303 15:56:33.834"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="PuppeteerLibrary">
+<arg>${MP_LoginBox_lbl_TermsAndConditon}</arg>
+<doc>Waits until ``locator`` element is displayed on web page.</doc>
+<status status="PASS" starttime="20220303 15:56:33.834" endtime="20220303 15:56:33.841"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="PuppeteerLibrary">
+<arg>${MP_LoginBox_lbl_NotaMemberYet}</arg>
+<doc>Waits until ``locator`` element is displayed on web page.</doc>
+<status status="PASS" starttime="20220303 15:56:33.841" endtime="20220303 15:56:33.850"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="PuppeteerLibrary">
+<arg>${MP_LoginBox_lbl_Login-Register}</arg>
+<doc>Waits until ``locator`` element is displayed on web page.</doc>
+<status status="PASS" starttime="20220303 15:56:33.850" endtime="20220303 15:56:33.873"/>
+</kw>
+<kw name="Capture Page Screenshot" library="PuppeteerLibrary">
+<doc>Capture current web page as image png file.</doc>
+<msg timestamp="20220303 15:56:39.035" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="puppeteer-screenshot-6.png"&gt;&lt;img src="puppeteer-screenshot-6.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220303 15:56:33.874" endtime="20220303 15:56:39.035"/>
+</kw>
+<status status="PASS" starttime="20220303 15:56:33.699" endtime="20220303 15:56:39.035"/>
+</kw>
+<kw name="Clear Element Text" library="PuppeteerLibrary">
+<arg>${MP_LoginBox_txt_Email}</arg>
+<doc>Clears value of text field identified by ``locator``.</doc>
+<status status="PASS" starttime="20220303 15:56:39.035" endtime="20220303 15:56:39.150"/>
+</kw>
+<kw name="Clear Element Text" library="PuppeteerLibrary">
+<arg>${MP_LoginBox_txt_Password}</arg>
+<doc>Clears value of text field identified by ``locator``.</doc>
+<status status="PASS" starttime="20220303 15:56:39.150" endtime="20220303 15:56:39.296"/>
+</kw>
+<kw name="Input Text" library="PuppeteerLibrary">
+<arg>${MP_LoginBox_txt_Email}</arg>
+<arg>${Email}</arg>
+<doc>Types the given text into text field identified by ``locator``.</doc>
+<msg timestamp="20220303 15:56:39.296" level="INFO">Typing text 'vvvv_5429@gmail.com' into text field 'xpath=//input[@id='txt-loginForm-email']'.</msg>
+<status status="PASS" starttime="20220303 15:56:39.296" endtime="20220303 15:56:39.704"/>
+</kw>
+<kw name="Input Password" library="PuppeteerLibrary">
+<arg>${MP_LoginBox_txt_Password}</arg>
+<arg>${Password}</arg>
+<doc>Types the given text into text field same as ``Input Text`` Keyword.</doc>
+<msg timestamp="20220303 15:56:39.704" level="INFO">Typing password into text field 'xpath=//input[@id='txt-loginForm-password']'.</msg>
+<status status="PASS" starttime="20220303 15:56:39.704" endtime="20220303 15:56:40.218"/>
+</kw>
+<kw name="Run Async Keywords" library="PuppeteerLibrary">
+<arg>Click Element</arg>
+<arg>${MP_LoginBox_btn_SubmitLogin}</arg>
+<arg>AND</arg>
+<arg>Wait For Request Url</arg>
+<arg>${Login_API}</arg>
+<arg>POST</arg>
+<arg>AND</arg>
+<arg>Wait For Response Url</arg>
+<arg>${Login_API}</arg>
+<arg>401</arg>
+<doc>Executes all the given keywords in a asynchronous and wait until all keyword is completed</doc>
+<msg timestamp="20220303 15:56:40.428" level="INFO">Wait for request url: POST - https://www.officemate.co.th/api/login</msg>
+<msg timestamp="20220303 15:56:40.607" level="INFO">Wait for request url: https://www.officemate.co.th/api/login
+{"status":"Unauthorized","cause":{"message":"You did not sign in correctly or your account is temporarily disabled."}}</msg>
+<status status="PASS" starttime="20220303 15:56:40.218" endtime="20220303 15:56:40.607"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>4s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220303 15:56:44.607" level="INFO">Slept 4 seconds</msg>
+<status status="PASS" starttime="20220303 15:56:40.607" endtime="20220303 15:56:44.607"/>
+</kw>
+<status status="PASS" starttime="20220303 15:56:33.460" endtime="20220303 15:56:44.607"/>
+</kw>
+<kw name="Default Test Teardown" library="OFW_Login_Page" type="TEARDOWN">
+<kw name="Capture Page Screenshot" library="PuppeteerLibrary">
+<doc>Capture current web page as image png file.</doc>
+<msg timestamp="20220303 15:56:46.978" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="puppeteer-screenshot-7.png"&gt;&lt;img src="puppeteer-screenshot-7.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220303 15:56:44.608" endtime="20220303 15:56:46.978"/>
+</kw>
+<kw name="Close All Browser" library="PuppeteerLibrary">
+<doc>Close all browser</doc>
+<status status="PASS" starttime="20220303 15:56:46.978" endtime="20220303 15:56:48.279"/>
+</kw>
+<status status="PASS" starttime="20220303 15:56:44.607" endtime="20220303 15:56:48.279"/>
+</kw>
+<doc>Login With Wrong Email And Wrong Password</doc>
+<tag>Login</tag>
+<status status="PASS" starttime="20220303 15:54:41.477" endtime="20220303 15:56:48.279"/>
+</test>
+<status status="PASS" starttime="20220303 15:54:41.118" endtime="20220303 15:56:48.280"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">Login</stat>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="OFW Login">OFW Login</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
